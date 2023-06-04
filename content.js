@@ -87,7 +87,6 @@ async function getStructuredWorkouts() {
   const userToken = localStorage.getItem("user-token");
   const today = new Date();
   const formattedToday = today.toISOString().split("T")[0];
-  // Calculate the end date (today + 7 days)
   const endDate = new Date(today);
   endDate.setDate(today.getDate() + 7);
   const formattedEndDate = endDate.toISOString().split("T")[0];
@@ -128,14 +127,12 @@ function getWorkoutDownload(workoutKey, workoutName) {
   xhr.responseType = "blob"; // <-- Set the response type to blob
   xhr.onload = function () {
     if (xhr.status === 200) {
-      // Request succeeded, handle the response here
       const file = new Blob([xhr.response], { type: "text/plain" });
 
-      // Create a link and append it to the body
       const a = document.createElement("a");
       const url = window.URL.createObjectURL(file);
       a.href = url;
-      a.download = `${workoutName}.zwo`; // Or any other filename you want
+      a.download = `${workoutName}.zwo`;
       document.body.appendChild(a);
       a.click(); // Simulate a click on the link
       setTimeout(function () {
