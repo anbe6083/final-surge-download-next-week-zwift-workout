@@ -1,12 +1,12 @@
 {
-  "name": "Button Injector",
+  "name": "Download Next Week's Zwift Workouts from Final Surge",
   "version": "1.0",
-  "description": "Inject a button into the current page",
+  "description": "Mass download next week's Zwift workouts as .zwo files",
   "manifest_version": 3,
   "permissions": ["activeTab", "scripting"],
   "content_scripts": [
     {
-      "matches": ["https://*/*"],
+      "matches": ["https://beta.finalsurge.com/*"],
       "js": ["content.js"],
       "run_at": "document_end"
     }
