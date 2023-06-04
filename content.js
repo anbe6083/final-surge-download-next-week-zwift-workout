@@ -42,13 +42,14 @@ waitForElm(".main-list-group").then((elem) => {
   var newSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   newSvg.setAttribute("aria-hidden", "true");
   newSvg.classList.add("svg-icon", "menu-icon");
+  newSvg.setAttribute("id", "svg-container");
 
   // Create a new use element
   var newUse = document.createElementNS("http://www.w3.org/2000/svg", "use");
   newUse.setAttributeNS(
     "http://www.w3.org/1999/xlink",
     "xlink:href",
-    "#menu-icon-message-boards"
+    "#icon-download-file"
   );
 
   // Append the use element to the svg element
