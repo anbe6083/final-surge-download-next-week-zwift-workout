@@ -19,7 +19,6 @@ function waitForElm(selector) {
 }
 
 waitForElm(".main-list-group").then((elem) => {
-  // Create a new anchor element
   var newAnchor = document.createElement("a");
   newAnchor.href = "#";
   newAnchor.classList.add(
@@ -29,7 +28,6 @@ waitForElm(".main-list-group").then((elem) => {
   );
   newAnchor.style.backgroundColor = "#FB6418";
   newAnchor.style.color = "#fff";
-  // Create a new div element
   var newDiv = document.createElement("div");
   newDiv.classList.add(
     "d-flex",
@@ -38,13 +36,11 @@ waitForElm(".main-list-group").then((elem) => {
     "align-items-center"
   );
 
-  // Create a new svg element
   var newSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   newSvg.setAttribute("aria-hidden", "true");
   newSvg.classList.add("svg-icon", "menu-icon");
   newSvg.setAttribute("id", "svg-container");
 
-  // Create a new use element
   var newUse = document.createElementNS("http://www.w3.org/2000/svg", "use");
   newUse.setAttributeNS(
     "http://www.w3.org/1999/xlink",
@@ -52,21 +48,15 @@ waitForElm(".main-list-group").then((elem) => {
     "#icon-download-file"
   );
 
-  // Append the use element to the svg element
   newSvg.appendChild(newUse);
 
-  // Create a new span element
   var newSpan = document.createElement("span");
   newSpan.classList.add("menu-collapsed");
   newSpan.textContent = "Download Zwift Workouts";
 
-  // Append the svg and span elements to the div
   newDiv.appendChild(newSvg);
   newDiv.appendChild(newSpan);
-
-  // Append the div to the anchor
   newAnchor.appendChild(newDiv);
-
   elem.append(newAnchor);
 });
 
@@ -124,7 +114,7 @@ function getWorkoutDownload(workoutKey, workoutName) {
     true
   );
   xhr.setRequestHeader("Authorization", "Bearer " + authToken);
-  xhr.responseType = "blob"; // <-- Set the response type to blob
+  xhr.responseType = "blob";
   xhr.onload = function () {
     if (xhr.status === 200) {
       const file = new Blob([xhr.response], { type: "text/plain" });
@@ -134,14 +124,12 @@ function getWorkoutDownload(workoutKey, workoutName) {
       a.href = url;
       a.download = `${workoutName}.zwo`;
       document.body.appendChild(a);
-      a.click(); // Simulate a click on the link
+      a.click();
       setTimeout(function () {
-        // Remove the link after a few seconds
         document.body.removeChild(a);
         window.URL.revokeObjectURL(url);
       }, 0);
     } else {
-      // Request failed, handle the error here
       console.error("Request failed with status " + xhr.status);
     }
   };
