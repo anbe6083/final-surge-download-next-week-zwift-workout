@@ -1,5 +1,5 @@
 {
-  "name": "Download Next Week's Zwift Workouts from Final Surge",
+  "name": "Mass download Zwift Workouts from Final Surge",
   "version": "1.0",
   "description": "Mass download next week's Zwift workouts as .zwo files",
   "manifest_version": 3,
