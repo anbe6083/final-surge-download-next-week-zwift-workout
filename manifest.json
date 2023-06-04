@@ -1,0 +1,14 @@
+{
+  "name": "Button Injector",
+  "version": "1.0",
+  "description": "Inject a button into the current page",
+  "manifest_version": 3,
+  "permissions": ["activeTab", "scripting"],
+  "content_scripts": [
+    {
+      "matches": ["https://*/*"],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ]
+}
